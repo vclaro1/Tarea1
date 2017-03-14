@@ -31,7 +31,7 @@ class ComentariosController < ApplicationController
         format.html { redirect_to noticia, notice: 'Comentario was successfully created.' }
         format.json { render :show, status: :created, location: @comentario }
       else
-        format.html { render :new }
+        format.html { redirect_to noticia, notice: "Error: uno de los parametros esta vacio."}
         format.json { render json: @comentario.errors, status: :unprocessable_entity }
       end
     end

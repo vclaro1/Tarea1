@@ -24,6 +24,7 @@ class NoticiaController < ApplicationController
   end
   # GET /noticia/1/edit
   def edit
+    @noticium = Noticium.find(params[:id])
   end
 
   # POST /noticia
@@ -58,6 +59,7 @@ class NoticiaController < ApplicationController
   # DELETE /noticia/1
   # DELETE /noticia/1.json
   def destroy
+    @noticium = Noticium.find(params[:id])
     @noticium.destroy
     respond_to do |format|
       format.html { redirect_to noticia_url, notice: 'Noticium was successfully destroyed.' }

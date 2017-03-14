@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'noticia/administrador' => 'noticia#administrador'
-  resources :noticia do 
-      resources :comentarios
+  resources :noticia do   
+    resources :comentarios
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

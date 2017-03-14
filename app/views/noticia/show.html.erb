@@ -1,23 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Titulo:</strong>
-  <%= @noticium.titulo %>
-</p>
-
-<p>
-  <strong>Bajada:</strong>
-  <%= @noticium.bajada %>
-</p>
-
-<p>
-  <strong>Cuerpo:</strong>
-  <%= @noticium.cuerpo %>
-</p>
-
-<%= link_to 'Edit', edit_noticium_path(@noticium) %> |
-<%= link_to 'Back', noticia_path %>
-<table>
+  <h1><%= @noticium.titulo %></h1><br>
+  <h5><%= @noticium.bajada %></h5><br>
+  <p><%= @noticium.cuerpo %></p>
+ 
+<table class="table">
   <thead>
     <tr>
       <th>Nombre</th>
@@ -34,7 +21,8 @@
     <% end %>
   </tbody>
 </table>
-<h1>New Comentario</h1>
+<h3>New Comentario</h3>
 
 <%= render 'comentarios/form' %>
-
+<%= link_to 'Edit', edit_noticium_path(@noticium) %> |
+<%= link_to 'Back', noticia_path %>
