@@ -1,15 +1,17 @@
 class NoticiaController < ApplicationController
-  before_action :set_noticium, only: [:show, :edit, :update, :destroy]
+  before_action :set_noticium, only: [:show, :edit, :update, :destroy, :administrador]
 
   # GET /noticia
   # GET /noticia.json
   def index
-    @noticia = Noticium.all
+    @noticia = Noticium.last(10).reverse
   end
 
   # GET /noticia/1
   # GET /noticia/1.json
   def show
+    @noticium = Noticium.find(params[:id])
+    @comentario = Comentario.new
   end
 
   # GET /noticia/new
@@ -17,6 +19,9 @@ class NoticiaController < ApplicationController
     @noticium = Noticium.new
   end
 
+  def administrador
+    @noticia = Noticium.all.reverse 
+  end
   # GET /noticia/1/edit
   def edit
   end
@@ -25,7 +30,6 @@ class NoticiaController < ApplicationController
   # POST /noticia.json
   def create
     @noticium = Noticium.new(noticium_params)
-
     respond_to do |format|
       if @noticium.save
         format.html { redirect_to @noticium, notice: 'Noticium was successfully created.' }
@@ -64,11 +68,11 @@ class NoticiaController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_noticium
-      @noticium = Noticium.find(params[:id])
+    
     end
-
+ 
     # Never trust parameters from the scary internet, only allow the white list through.
     def noticium_params
-      params.require(:noticium).permit(:titulo, :bajada, :cuerpo)
+      params.require(:noticium).permit(:titulo, :bajada, :cuerpo, cometarios_attributes:[:nombre, :comment])
     end
 end
